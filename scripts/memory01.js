@@ -7,12 +7,15 @@ const largImg = 120;
 const hautImg = 160;
 const xO = 10;
 const yO = 10;
+let tabImagesCliquee1 =[];
+let tabImagesCliquee2 =[];
+let compteurImage = 0;
 
 
 // Création des images
-for (let i=O; i<=8; i++){
+for (let i=0; i<=8; i++){
     window["img" + i] = new Image();
-    window["img" + i].src = "images/img" + i + ".jpg";
+    window["img" + i].src = "../images/img" + i + ".jpg";
 }
 
 // Stockage des images dans un tableau
@@ -21,6 +24,16 @@ for(let i=0; i<=7; i++){
     tabImages[2*i] = window["img" + (i+1)];
     tabImages[2*i+1] = window["img" + (i+1)];
 }
+
+// Mélange aléatoire des images du tabImages
+tabImages.sort(() => Math.random() - 0.5);
+
+// Création du tableau des images trouvées
+const tabImagesTrouvees = [];
+for(let i=0; i<=15; i++){
+    tabImagesTrouvees[i]=img0;
+}
+
 
 // Dessin des images vignettes
 
@@ -49,12 +62,104 @@ function dessineGrille(ctx){
     ctx.stroke();
 }
 
+// Action souris sur la zone de dessin
+cvs.addEventListener("click", infoImageCliquee);
+function infoImageCliquee(e) {
+    const decalageSouris = 8;
+    let x = Math.floor((e.clientX - decalageSouris) / largImg);
+    let y = Math.floor((e.clientY - decalageSouris) / hautImg);
+    let imageCliquee;
+
+    if (y === 0) {
+        switch (x) {
+            case 0:
+                imageCliquee = tabImages[0];
+                break;
+            case 1:
+                imageCliquee = tabImages[1];
+                break;
+            case 2:
+                imageCliquee = tabImages[2];
+                break;
+            case 3:
+                imageCliquee = tabImages[3];
+                break;
+        }
+
+    } else if (y === 1) {
+        switch (x) {
+            case 0:
+                imageCliquee = tabImages[4];
+                break;
+            case 1:
+                imageCliquee = tabImages[5];
+                break;
+            case 2:
+                imageCliquee = tabImages[6];
+                break;
+            case 3:
+                imageCliquee = tabImages[7];
+                break;
+        }
+
+    } else if (y === 2) {
+        switch (x) {
+            case 0:
+                imageCliquee = tabImages[8];
+                break;
+            case 1:
+                imageCliquee = tabImages[9];
+                break;
+            case 2:
+                imageCliquee = tabImages[10];
+                break;
+            case 3:
+                imageCliquee = tabImages[11];
+                break;
+        }
+    } else if (y === 3) {
+        switch (x) {
+            case 0:
+                imageCliquee = tabImages[12];
+                break;
+            case 1:
+                imageCliquee = tabImages[13];
+                break;
+            case 2:
+                imageCliquee = tabImages[14];
+                break;
+            case 3:
+                imageCliquee = tabImages[15];
+                break;
+        }
+    }
+
+    if (compteurImage === 0) {
+        tabImagesCliquee1 = [imageCliquee, x * largImg + xO, y * hautImg + yO];
+        tabImagesCliquee2 = [];
+        compteurImage = 1;
+    } else if (x * largImg + xO !== tabImagesCliquee1[1] || y * hautImg + yO !== tabImagesCliquee1[2])
+        tabImagesCliquee2 = [imageCliquee, x * largImg + xO, y * hautImg + yO];
+    compteurImage = 0;
+    dessine();
+}
+
+
+function dessinImageCliquee(ctx){
+    if (tabImagesCliquee1.length > 0){
+        ctx.drawImage(tabImagesCliquee1[0], tabImagesCliquee1[1], tabImagesCliquee1[2])
+    }
+    if (tabImagesCliquee2.length > 0){
+        ctx.drawImage(tabImagesCliquee2[0], tabImagesCliquee2[1], tabImagesCliquee2[2])
+    }
+}
 function dessine(){
-    dessineImages(ctx, tabImages);
+    dessineImages(ctx, tabImagesTrouvees);
+    dessinImageCliquee(ctx)
     dessineGrille(ctx);
 }
 
-dessine();
+window.onload = () => {dessine();}
 
 
 
