@@ -1,10 +1,21 @@
-body{
-    background-color:indianred;
-}
 .container{
     display: flex;
     justify-content: center;
     align-items: center;
 
     height: 100vh ;
+}
+
+.slot-item{
+    background-color: black;
+}
+
+.slot-img{
+    width: 100px;
+    height: 120px;
+}
+
+.slot-img img{
+    width: 100px;
+    height: 100px;
 }
