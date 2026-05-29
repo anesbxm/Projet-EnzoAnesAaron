@@ -1,0 +1,10 @@
+body{
+    background-color:indianred;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh ;
+}
