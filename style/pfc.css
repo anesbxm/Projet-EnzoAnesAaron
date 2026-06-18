@@ -1,0 +1,231 @@
+:root {
+  --fond-sombre: #0d0221;
+  --fond-panneau: #190a35;
+  --neon-cyan: #08f7fe;
+  --neon-rose: #ff2e63;
+  --neon-jaune: #fee440;
+  --texte-clair: #f5f3ff;
+  --glow-vert: #39ff14;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fond-sombre);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--texte-clair);
+  padding: 20px;
+}
+
+.borne {
+  background: #1a0b3d;
+  border-radius: 28px;
+  padding: 18px;
+  box-shadow: 0 0 0 4px #000;
+}
+
+.ecran {
+  position: relative;
+  overflow: hidden;
+  background: var(--fond-panneau);
+  border: 3px solid var(--neon-cyan);
+  border-radius: 18px;
+  padding: 26px 22px;
+  max-width: 480px;
+  text-align: center;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.04) 0px,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+.titre-neon {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.sous-titre {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--neon-rose);
+  margin: 6px 0 18px;
+}
+
+.tableau-scores {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.bloc-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px solid var(--neon-jaune);
+  border-radius: 10px;
+  padding: 8px 18px;
+  min-width: 90px;
+}
+
+.etiquette {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--neon-jaune);
+  margin-bottom: 4px;
+}
+
+.valeur-score {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 20px;
+}
+
+.arene {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.combattant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--neon-cyan);
+  gap: 8px;
+}
+
+.main {
+  font-size: 60px;
+  line-height: 1;
+  transition: transform 0.2s, filter 0.3s;
+}
+
+.badge-central {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px;
+  color: var(--neon-rose);
+  min-width: 60px;
+}
+
+.main.secousse {
+  animation: secousse 0.25s infinite;
+}
+
+@keyframes secousse {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-12deg) translateY(-4px);
+  }
+  75% {
+    transform: rotate(12deg) translateY(-4px);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.main.gagnant {
+  filter: drop-shadow(0 0 18px var(--glow-vert));
+  transform: scale(1.15);
+}
+
+.main.perdant {
+  filter: drop-shadow(0 0 18px var(--neon-rose));
+  opacity: 0.6;
+}
+
+.message {
+  font-size: 15px;
+  min-height: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.boutons-choix {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.bouton-arcade {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--fond-sombre);
+  background: var(--neon-cyan);
+  border: none;
+  border-radius: 14px;
+  padding: 14px 8px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.bouton-arcade .emoji-bouton {
+  display: block;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.bouton-feuille {
+  background: var(--neon-rose);
+  color: #2b0014;
+}
+
+.bouton-ciseaux {
+  background: var(--neon-jaune);
+  color: #2b2400;
+}
+
+.bouton-arcade:hover {
+  filter: brightness(1.15);
+}
+
+.bouton-arcade:active {
+  transform: translateY(4px);
+}
+
+.bouton-arcade:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bouton-reset {
+  background: none;
+  border: 2px solid var(--texte-clair);
+  color: var(--texte-clair);
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.bouton-reset:hover {
+  border-color: var(--neon-rose);
+  color: var(--neon-rose);
+}
