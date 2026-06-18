@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="../style/memory.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
-        <p> Bonjour ca va ?</p>
-        <script src="../scripts/memory01.js"></script>
-
+<p id="message">Cliquez sur une case pour commencer</p>
+<div id="jeu-wrapper">
+    <canvas id="zone_de_dessin"></canvas>
+    <div id="infos-droite">
+        <p id="timer"></p>
+        <p id="compteurTrouves">0 combinaison(s) trouvée(s)</p>
+        <p id="compteurRestant">8 combinaison(s) restante(s)</p>
+        <hr id="separateur">
+        <p id="infoAvantTimer">⚠️ Timer dans : 10 essai(s) raté(s)</p>
+        <p id="infoAvantX2">⚡ x2 dans : 20 essai(s) raté(s)</p>
+        <hr id="separateur2">
+        <label id="labelBackground" for="choixBackground">🎨 Background :</label>
+        <select id="choixBackground">
+            <option value="arcade1">Arcade 1</option>
+            <option value="arcade2">Arcade 2</option>
+            <option value="arcade3" selected>Arcade 3</option>
+            <option value="arcade4">Arcade 4</option>
+        </select>
+    </div>
+</div>
+<script src="../scripts/memory01.js"></script>
 </body>
 </html>

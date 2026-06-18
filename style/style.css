@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Le wrapper est en position relative pour que les zones cliquables
+   se positionnent par rapport à lui */
+#menu-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+#menu-img {
+    display: block;
+    width: 100%;
+    max-width: 1340px;
+}
+
+/* Style commun aux 3 zones cliquables :
+   invisibles, positionnées en absolu sur l'image */
+.zone-cliquable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    /* décommenter la ligne suivante pour voir les zones pendant le développement : */
+    /* background: rgba(255, 0, 0, 0.3); */
+}
+
+/* Position et taille de chaque zone (en %)
+   pour s'adapter à toutes les tailles d'écran */
+#zone-memory {
+    left: 22%;
+    top: 33%;
+    width: 20%;
+    height: 52%;
+}
+
+#zone-roulette {
+    left: 42%;
+    top: 33%;
+    width: 20%;
+    height: 52%;
+}
+
+#zone-pfc {
+    left: 62%;
+    top: 33%;
+    width: 20%;
+    height: 52%;
+}
