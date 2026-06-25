@@ -1,21 +1,75 @@
-.container{
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.Machines {
+    background-image: url("../images/Machines.png");
+    background-repeat: no-repeat;
+    height: 900px;
+    width: 800px;
+    background-size: 750px;
+}
+
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: -50px;
 
-    height: 100vh ;
 }
 
-.slot-item{
-    background-color: black;
+button{
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    background-color: indianred;
+    position: absolute;
+    z-index: 50;
+    right: 40px;
+    top: 300px;
+}
+.slot-item {
+    padding: 10px;
+    margin-top: 318px;
 }
 
-.slot-img{
+.slot-img {
     width: 100px;
     height: 120px;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.slot-img img{
+.slot-img img {
     width: 100px;
-    height: 100px;
 }
+
+.slot-img img.animate {
+    animation: slideDown 0.1s ease-in-out infinite;
+}
+
+button {
+    width: 50vw;
+    margin-top: 20px;
+}
+
+@keyframes slideDown {
+    0% {
+        filter: blur(5px);
+        transform: translateY(-100px);
+    }
+    100% {
+        filter: blur(5px);
+        transform: translateY(100px);
+    }
+}
+

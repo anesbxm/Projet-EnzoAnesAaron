@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="/style/roulette.css">
 </head>
 <body>
+<button></button>
 <h1>Hello, Voici mon jeu</h1>
+<div class="Machines">
 <div class="container">
     <div class="slot-item">
         <div class="slot-img">
@@ -24,8 +26,17 @@
         </div>
     </div>
 </div>
+</div>
 
-<button>Jackpot!</button>
+<div class="mise-et-gains">
+    <label for=""> Mise :</label>
+    <input type="text" name="mise" id="miseDeUser">
+    <br><br><br>
+    <label for=""> Gains :</label>
+    <input type="text" name="gains" value="50" id="gainsDeUser" readonly>
+</div>
+
+
 <script src="/scripts/roulette.js"></script>
 </body>
 </html>
