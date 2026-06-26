@@ -10,9 +10,18 @@ const yO = 10;
 
 
 // Création des images
-for (let i=O; i<=8; i++){
+let imagesChargees = 0;
+const totalImages = 8;
+for (let i=0; i<=8; i++){
     window["img" + i] = new Image();
-    window["img" + i].src = "images/img" + i + ".jpg";
+    window["img" + i].onload = () => {
+        imagesChargees++;
+        // On (re)dessine une fois que toutes les images sont prêtes
+        if (imagesChargees >= totalImages) {
+            dessine();
+        }
+    };
+    window["img" + i].src = "../images/img" + i + ".jpg";
 }
 
 // Stockage des images dans un tableau
@@ -54,7 +63,8 @@ function dessine(){
     dessineGrille(ctx);
 }
 
-dessine();
+// dessine() est désormais appelé automatiquement quand toutes
+// les images sont chargées (voir les onload ci-dessus).
 
 
 

@@ -1,0 +1,29 @@
+/* ===================================================================
+   JEU DE MEMORY — styles spécifiques (s'ajoute à style.css)
+   =================================================================== */
+
+#zone_de_dessin {
+    background: rgba(0, 0, 0, 0.35);
+    border: 3px solid var(--or);
+    border-radius: 16px;
+    box-shadow:
+        0 0 25px rgba(255, 210, 74, 0.45),
+        inset 0 0 30px rgba(255, 78, 199, 0.12);
+    max-width: 95vw;
+    height: auto;
+    animation: apparition 0.6s ease-out;
+}
+
+@keyframes apparition {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.retour {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--bleu-neon);
+    text-decoration: none;
+    font-weight: bold;
+}
+.retour:hover { text-shadow: 0 0 10px var(--bleu-neon); }
