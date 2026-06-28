@@ -1,3 +1,18 @@
+/* ===================================================================
+   THÈME GLOBAL — Casino néon (utilisé par toutes les pages)
+   =================================================================== */
+
+:root {
+    --or: #ffd24a;
+    --or-clair: #fff1b8;
+    --rouge: #e63946;
+    --vert-feutre: #0b6e3a;
+    --fond-1: #1a0b2e;
+    --fond-2: #2d0b3e;
+    --neon: #ff4ec7;
+    --bleu-neon: #4ee0ff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +20,150 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--or-clair);
+    text-align: center;
+    background:
+        linear-gradient(rgba(18, 8, 33, 0.72), rgba(18, 8, 33, 0.82)),
+        url("../images/image.png") center center / cover no-repeat fixed;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    letter-spacing: 2px;
+    margin: 0 0 0.4em;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow:
+        0 0 8px var(--or),
+        0 0 18px var(--or),
+        0 0 35px var(--neon);
+    animation: pulseTitre 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseTitre {
+    0%, 100% { text-shadow: 0 0 8px var(--or), 0 0 18px var(--or), 0 0 35px var(--neon); }
+    50%      { text-shadow: 0 0 14px var(--or-clair), 0 0 28px var(--neon), 0 0 55px var(--bleu-neon); }
+}
+
+/* ---------- Page d'accueil : cartes de jeux ---------- */
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 0;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 220px;
+    height: 160px;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--or-clair);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border: 2px solid var(--or);
+    border-radius: 18px;
+    box-shadow: 0 0 18px rgba(255, 210, 74, 0.35), inset 0 0 25px rgba(255, 78, 199, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+nav a:hover {
+    transform: translateY(-8px) scale(1.04);
+    border-color: var(--neon);
+    box-shadow: 0 0 30px var(--neon), 0 0 60px rgba(78, 224, 255, 0.4);
+}
+
+/* ---------- Bouton flottant Musique (commun à toutes les pages) ---------- */
+
+#btn-musique {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 999;
+    width: auto;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--fond-1);
+    background: var(--or);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 0 14px rgba(255, 210, 74, 0.6);
+    transition: transform 0.15s ease, box-shadow 0.25s ease;
+}
+
+#btn-musique:hover { transform: scale(1.06); }
+
+#btn-musique.actif {
+    background: var(--neon);
+    color: #fff;
+    box-shadow: 0 0 22px var(--neon);
+    animation: clignote 1.2s ease-in-out infinite;
+}
+
+@keyframes clignote {
+    0%, 100% { box-shadow: 0 0 22px var(--neon); }
+    50%      { box-shadow: 0 0 38px var(--bleu-neon); }
+}
+
+/* ===================================================================
+   FOND ARCADE ANIMÉ — appliquer la classe "arcade" sur <body>
+   =================================================================== */
+
+body.arcade {
+    position: relative;
+    background:
+        linear-gradient(rgba(18, 8, 33, 0.72), rgba(18, 8, 33, 0.82)),
+        url("../images/image.png") center center / cover no-repeat fixed;
+    overflow-x: hidden;
+}
+
+/* Lumières scintillantes (marquee) */
+body.arcade::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, var(--or) 50%, transparent),
+        radial-gradient(2px 2px at 70% 20%, var(--neon) 50%, transparent),
+        radial-gradient(2px 2px at 40% 70%, var(--bleu-neon) 50%, transparent),
+        radial-gradient(2px 2px at 85% 60%, var(--or-clair) 50%, transparent),
+        radial-gradient(2px 2px at 10% 80%, var(--neon) 50%, transparent),
+        radial-gradient(2px 2px at 60% 90%, var(--or) 50%, transparent);
+    animation: scintille 2.4s ease-in-out infinite alternate;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes scintille {
+    0%   { opacity: 0.25; }
+    100% { opacity: 0.9; }
+}
+
+/* Le contenu reste au-dessus du fond */
+body.arcade > * { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+    body.arcade::after { animation: none; }
+}
     background-color: #000;
     display: flex;
     justify-content: center;

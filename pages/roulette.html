@@ -1,31 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <title>Roulette</title>
-    <link rel="stylesheet" href="/style/roulette.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine à sous</title>
+    <!-- Feuilles de style : thème global puis styles de la machine -->
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/roulette.css">
 </head>
-<body>
-<h1>Hello, Voici mon jeu</h1>
-<div class="container">
-    <div class="slot-item">
-        <div class="slot-img">
-            <img src="../images/slot_items/banana.png" alt="banana"/>
-        </div>
-    </div>
-    <div class="slot-item">
-        <div class="slot-img">
-            <img src="../images/slot_items/sept.png" alt="sept"/>
-        </div>
-    </div>
+<body class="arcade">
+<h1>🎰 Machine à sous</h1>
 
-    <div class="slot-item">
-        <div class="slot-img">
-            <img src="../images/slot_items/cerise.png" alt="cerise"/>
+<div class="jeu">
+
+    <div class="Machines">
+        <div class="container">
+            <div class="slot-item">
+                <div class="slot-img">
+                    <img src="../images/slot_items/banana.png" alt="banana"/>
+                </div>
+            </div>
+            <div class="slot-item">
+                <div class="slot-img">
+                    <img src="../images/slot_items/sept.png" alt="sept"/>
+                </div>
+            </div>
+            <div class="slot-item">
+                <div class="slot-img">
+                    <img src="../images/slot_items/cerise.png" alt="cerise"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panneau">
+        <p id="message">Faites votre mise et lancez&nbsp;!</p>
+
+        <button type="button" id="lancer" class="lancer">LANCER</button>
+
+        <div class="mise-et-gains">
+            <div class="ligne solde">
+                <span>💰 Mise :</span>
+                <strong id="gainsDeUser">50</strong>
+            </div>
+            <div class="ligne"><span>🎲 Mise :</span></div>
+            <div class="ligne mise-ligne">
+                <button type="button" class="chip" data-delta="-10">−</button>
+                <strong id="miseAffichee">10</strong>
+                <button type="button" class="chip" data-delta="10">+</button>
+            </div>
+            <input type="hidden" id="miseDeUser" value="10">
+
+            <div class="ligne chips">
+                <button type="button" class="chip" data-set="10">10</button>
+                <button type="button" class="chip" data-set="50">50</button>
+                <button type="button" class="chip" data-set="100">100</button>
+                <button type="button" class="chip" data-set="200">200</button>
+                <button type="button" class="chip" id="miseMax">Max</button>
+            </div>
+            <button type="button" id="reset" class="reset">🔄 Tout réinitialiser</button>
         </div>
     </div>
 </div>
-
-<button>Jackpot!</button>
-<script src="/scripts/roulette.js"></script>
+<script src="../scripts/roulette.js"></script>
+<script src="../scripts/musique.js"></script>
 </body>
 </html>
