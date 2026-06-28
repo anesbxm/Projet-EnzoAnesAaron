@@ -151,7 +151,6 @@ const chooseRandom = (imgEl, index) => {
 }
 
 const randomizeImgs = (imgEl, index, time) => {
-.
     const timeInterval = setInterval(() => {
         chooseRandom(imgEl, index)
     }, 100)
